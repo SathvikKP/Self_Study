@@ -2,7 +2,7 @@
 
 clear
 
-gcc *.c -o output
+gcc *.c -o output -lm
 
 ./output
 

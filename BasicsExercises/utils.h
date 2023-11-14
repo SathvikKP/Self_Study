@@ -9,11 +9,19 @@
         exit(EXIT_FAILURE);\
     }
 
+#define REALLOC(p,s) \
+    if (!((p) = realloc(p,s))) { \
+        fprintf(stderr, "Insufficient Memory\n"); \
+        exit(EXIT_FAILURE);\
+    }
+
+
 #define SWAP(x,y,t) ((t) = (x), (x) = (y), (y) = (t))
 
 #define COMPARE(x,y) (((x) < (y)) ? -1 : ((x) == (y)) ? 0 : 1)
 
 void printint(int, ...);
+void printdouble(int num, ...);
 void printarray(int[], int);
 void printarray_p(int**, int);
 void print2Darray(int m, int n, int[m][n]);

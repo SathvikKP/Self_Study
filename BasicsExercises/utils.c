@@ -16,6 +16,17 @@ void printint(int num, ...) {
     va_end(list);
 }
 
+void printdouble(int num, ...) {
+    
+    int i = 0;
+    va_list list;
+    va_start(list, num);
+    for (i = 0; i < num; i++){
+        printf("%f\n",va_arg(list, double));
+    }
+    va_end(list);
+}
+
 void printarray_p(int** array, int array_size) {
     int i = 0;
     for (i = 0; i < array_size; i++) {

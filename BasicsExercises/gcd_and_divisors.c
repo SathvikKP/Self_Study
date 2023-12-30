@@ -80,7 +80,7 @@ double square_root_manual(int n) {
             l = mid + 1;
         }
         else {
-            r = l - 1;
+            r = mid - 1;
         }
     }
 
@@ -161,7 +161,7 @@ void gcd_and_divisors_driver() {
     printint(1, gcd_I(a, b));
     printint(1, gcd_euclids(a, b));
     
-    int x = 5;
+    int x = 98;
     printdouble(1, square_root_manual(x));
     printdouble(1, sqrt(x));
 

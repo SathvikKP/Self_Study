@@ -8,6 +8,18 @@
 //[1,2,3]
 //[], [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]
 
+int count;
+
+float rsum(float list[], int n) {
+    count ++; /*for if conditional*/
+    if (n) {
+        count ++; /*for return and rsum invocation*/
+        return rsum(list,n-1) + list[n-1];
+    }
+    count ++;
+    return list[0];
+}
+
 void print_element_combinations(int arr[], int bool_arr[], int arr_size) {
     int i = 0;
     printf("\"");

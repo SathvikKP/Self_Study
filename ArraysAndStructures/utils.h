@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define DEALLOC_WARN 1
+
 #define MALLOC(p,s) \
     if (!((p) = malloc(s))) { \
         fprintf(stderr, "Insufficient Memory\n"); \

@@ -62,11 +62,15 @@ void print2Darray(int m, int n, int array[m][n]) {
 /*Log utilities*/
 
 void dealloc_warn() {
-    printf("\nTake care to deallocate memory in caller function!\n");
+    if (DEALLOC_WARN == 1) {
+        printf("\nTake care to deallocate memory in caller function!\n");
+    }
 }
 
 void dealloc_warn2d() {
-    printf("\nTake care to deallocate memory for 2d array in caller function!\n");
+    if (DEALLOC_WARN == 1) {
+        printf("\nTake care to deallocate memory for 2d array in caller function!\n");
+    }
 }
 
 /*arrays and 2d arrays*/

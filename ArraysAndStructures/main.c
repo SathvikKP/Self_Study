@@ -1,11 +1,15 @@
 #include <stdio.h>
 
-
 extern void run_test_utils();
+extern void matrix_driver();
+extern void polynomial_add_array_driver();
+extern void sparse_matrix_driver();
 
 int main() {
 
-    run_test_utils();
-
+    //run_test_utils();
+    //matrix_driver();
+    //polynomial_add_array_driver();
+    sparse_matrix_driver();
     return 0;
 }

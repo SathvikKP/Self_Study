@@ -61,7 +61,7 @@ void run_test_utils() {
 
     /*
     print("int* read_int_from_file(char[], int*);");
-    int array_size = 0; int* file_array = read_int_from_file("test_input_file.txt", &array_size);
+    int array_size = 0; int* file_array = read_int_from_file("inputs/test_input_file.txt", &array_size);
     printarray_p(file_array, array_size);
     */
 
@@ -72,6 +72,16 @@ void run_test_utils() {
     int m = 5, n = 4; int** array_2d_2 = get_2d_array(m, n); 
     print2Darray_p(array_2d_2, m, n); free2Darray(array_2d_2, m, n);
     */
+
+
+
+    /*
+    print("int** read_2d_array_from_file(char[], int*, int*); ");
+    char file_name[32] = "inputs/maze_array.txt"; int rows = 0, cols = 0; int** maze = NULL;
+    maze = read_2d_array_from_file(file_name, &rows, &cols);
+    print2Darray_p(maze, rows, cols); free2Darray(maze, rows, cols);
+    */
+
 
 
 }

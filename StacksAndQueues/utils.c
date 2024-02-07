@@ -158,3 +158,36 @@ void free2Darray(int** array, int rows, int cols) {
     }
     free(array);
 }
+
+int** read_2d_array_from_file(char file_name[], int* row_len, int* col_len) {
+
+    int i = 0;
+    int rows = 0;
+    int cols = 0;
+    int temp = 0;
+    int** array = NULL;
+    FILE* file = fopen(file_name, "r");
+    if (file == NULL) {
+        printf("FILE NOT FOUND!\n"); exit(EXIT_FAILURE);
+    }
+    
+    //assign the row length to main function variable pointer
+    fscanf(file, "%d", &rows); 
+    *row_len = rows;
+    //assign the col length to main function variable pointer
+    fscanf(file, "%d", &cols); 
+    *col_len = cols;
+    //allocate memory
+    
+    array = get_2d_array(rows, cols);
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            fscanf(file, "%d", &temp); *(*(array+i)+j) = temp; //or array[i][j] = temp ?;
+        }
+        
+    }
+    fclose(file);
+    return array;
+    
+}

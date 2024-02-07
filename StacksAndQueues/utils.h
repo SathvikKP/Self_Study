@@ -40,3 +40,4 @@ int* read_int_from_file(char[], int*);
 int** get_2d_array(int, int);
 void print2Darray_p(int**, int, int);
 void free2Darray(int**, int, int); 
+int** read_2d_array_from_file(char[], int*, int*);

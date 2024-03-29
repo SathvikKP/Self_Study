@@ -133,7 +133,40 @@ intListPointer* merge_intList_alternate(intListPointer *list1_p, intListPointer 
 
 */
 
+void invert_intList(intListPointer* first_p) {
+    
+    /*
+    intListPointer current = *first_p;
+    intListPointer next = NULL, trail = NULL;
 
+    if (current == NULL || current->link == NULL) {
+        //0 or 1 nodes
+        return;
+    }
+    next = current->link;
+    while (next != NULL) {
+        current->link = trail;
+        trail = current; //update trail
+        current = next; //update current
+        next = current->link; //update next
+    }
+    current->link = trail;
+    *first_p = current;
+
+    */
+
+    intListPointer lead = *first_p;
+    intListPointer middle = NULL, trail = NULL;
+    while (lead) {
+        trail = middle;
+        middle = lead;
+        lead = lead->link;
+        middle->link = trail;
+    }
+    *first_p = middle;
+    printf("List inverted!\n");
+
+}
 
 void int_linked_list_advanced_driver() {
 
@@ -152,12 +185,13 @@ void int_linked_list_advanced_driver() {
     print_intList(list2); nl();
 
     list3 = merge_intList_non_decreasing(&list1, &list2);
-    
-    print_intList(list3);
+    print_intList(list3); nl();
+
+    invert_intList(&list3);
+    print_intList(list3); nl();
 
     free_intList(&list3);
+    //free_intList(&list1);
     //free_intList(&list2);
-
-
 
 }

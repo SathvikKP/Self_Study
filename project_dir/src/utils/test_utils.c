@@ -10,7 +10,8 @@
 
 void run_test_utils() {
 
-    print("void print(char*); \nUncomment a test case in test_utils.c! \n ");
+    print("void print(char*); void nl(); \nUncomment a test case in test_utils.c! \n ");
+    nl(); nl();
 
     /*
     print("void printint(int, ...);");

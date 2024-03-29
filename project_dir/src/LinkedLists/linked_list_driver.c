@@ -11,5 +11,6 @@
 
 void linked_list_driver() {
     
-    printf("test make\n");
+    //simple_int_linked_list_driver();
+    int_linked_list_advanced_driver();
 } 

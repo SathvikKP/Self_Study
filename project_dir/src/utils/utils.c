@@ -13,6 +13,10 @@ void print(char* content) {
     printf("%s\n",content);
 }
 
+void nl() {
+    printf("\n");
+}
+
 void printint(int num, ...) {
     
     int i = 0;

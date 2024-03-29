@@ -29,6 +29,7 @@
 
 #define COMPARE(x,y) (((x) < (y)) ? -1 : ((x) == (y)) ? 0 : 1)
 
+void nl();
 void print(char*);
 void printint(int, ...);
 void printdouble(int num, ...);

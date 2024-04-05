@@ -32,6 +32,15 @@ struct queueLL{
     queuePointer link;
 };
 
+
+typedef struct polyNode polyNode;
+typedef struct polyNode *polyPointer;
+struct polyNode {
+    int coef;
+    int expon;
+    polyPointer link;
+};
+
 //driver functions
 void linked_list_driver();
 void simple_int_linked_list_driver();
@@ -80,5 +89,10 @@ void cleanup_linked_queues();
 
 
 //linked_list_polynomial functions
+void ll_print_polynomial(polyPointer polynomial);
+polyPointer ll_create_polynomial_node(int coef, int expon);
+polyPointer ll_create_polynomial(int coef_array[], int expon_array[], int array_size);
+void ll_free_polynomial(polyPointer *polynomial);
+polyPointer ll_add_polynomial(polyPointer polyA, polyPointer polyB);
 
 #endif

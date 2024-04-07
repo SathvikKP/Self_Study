@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define DEALLOC_WARN 1
+#define DEALLOC_WARN 0
 
 #define MALLOC(p,s) \
     if (!((p) = malloc(s))) { \

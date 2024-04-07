@@ -15,5 +15,8 @@ void linked_list_driver() {
     //int_linked_list_advanced_driver();
     //linked_stacks_driver();
     //linked_queues_driver();
-    linked_list_polynomial_driver();
+    //linked_list_polynomial_driver();
+    //linked_list_equivalence_class_driver();
+    linked_list_sparse_matrix_driver();
+    
 } 

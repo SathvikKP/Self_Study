@@ -41,6 +41,26 @@ struct polyNode {
     polyPointer link;
 };
 
+typedef enum {head, entry} tagfield;
+typedef struct entryNode entryNode;
+struct entryNode {
+    int row;
+    int col;
+    int value;
+};
+typedef struct matrixNode matrixNode;
+typedef struct matrixNode *matrixPointer;
+struct matrixNode {
+    matrixPointer down;
+    matrixPointer right;
+    tagfield tag;
+    union {
+        matrixPointer next;
+        entryNode entry;
+    } u; 
+    //anonymous union! Cannot be used outside of matrixNode
+};
+
 //driver functions
 void linked_list_driver();
 void simple_int_linked_list_driver();
@@ -48,6 +68,8 @@ void int_linked_list_advanced_driver();
 void linked_stacks_driver();
 void linked_queues_driver();
 void linked_list_polynomial_driver();
+void linked_list_equivalence_class_driver();
+void linked_list_sparse_matrix_driver();
 
 //simple_int_linked_list.c functions
 
@@ -88,11 +110,19 @@ void free_linked_queue(int queueNo);
 void cleanup_linked_queues();
 
 
-//linked_list_polynomial functions
+//linked_list_polynomial.c functions
 void ll_print_polynomial(polyPointer polynomial);
 polyPointer ll_create_polynomial_node(int coef, int expon);
 polyPointer ll_create_polynomial(int coef_array[], int expon_array[], int array_size);
 void ll_free_polynomial(polyPointer *polynomial);
 polyPointer ll_add_polynomial(polyPointer polyA, polyPointer polyB);
+
+//linked_list_equivalence_class.c functions
+void ll_eq_class_print_sequence(intListPointer seq[]);
+void ll_print_eq_class(intListPointer seq[], int out[]);
+
+//linked_list_sparse_matrix.c
+
+
 
 #endif

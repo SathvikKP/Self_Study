@@ -1,4 +1,4 @@
-TOH - iterative (stack ?)
+TOH --> iterative (stack ?)
 Prime factorization (better optimal methods)
 Powerset (optimal way using stacks / queues)
 Sum of Divisors (optimal efficient method)
@@ -16,3 +16,5 @@ Infix to postfix for all operators and operands + Multiple stacks, additional ex
 Queues --> lot of stuff
 
 Paranthesis matching
+
+Circular lists + polynomials

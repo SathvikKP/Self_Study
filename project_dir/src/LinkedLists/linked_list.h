@@ -6,6 +6,7 @@
 #define MAX_STACKS_LL 10
 #define MAX_QUEUES_LL 10
 
+
 typedef struct intListNode intListNode; //forward declaration
 typedef struct intListNode *intListPointer;
 struct intListNode{
@@ -60,6 +61,15 @@ struct matrixNode {
     } u; 
     //anonymous union! Cannot be used outside of matrixNode
 };
+#define MAX_SPARSE_MATRIX_SIZE 50
+typedef struct sparseMatrixLL sparseMatrixLL;
+typedef struct sparseMatrixLL *sparseMatrixPointerLL;
+struct sparseMatrixLL {
+    // Array of header nodes specific to this matrix
+    matrixPointer headNode[MAX_SPARSE_MATRIX_SIZE]; 
+    // Starting entry node pointer, similar to existing implementation
+    matrixPointer node; 
+};
 
 //driver functions
 void linked_list_driver();
@@ -70,9 +80,11 @@ void linked_queues_driver();
 void linked_list_polynomial_driver();
 void linked_list_equivalence_class_driver();
 void linked_list_sparse_matrix_driver();
+void linked_list_sparse_matrix_encapsulated_driver();
+void linked_list_sparse_matrix_advanced_driver();
+
 
 //simple_int_linked_list.c functions
-
 intListPointer create_intListNode(int x);
 void print_intList(intListPointer first);
 void free_intList(intListPointer* first_p);
@@ -121,8 +133,28 @@ polyPointer ll_add_polynomial(polyPointer polyA, polyPointer polyB);
 void ll_eq_class_print_sequence(intListPointer seq[]);
 void ll_print_eq_class(intListPointer seq[], int out[]);
 
-//linked_list_sparse_matrix.c
+//linked_list_sparse_matrix.c functions
+matrixPointer ll_create_sparse_matrix_node();
+matrixPointer ll_read_sparse_matrix(char* filename);
+void ll_print_sparse_matrix(matrixPointer node);
+void ll_erase_sparse_matrix(matrixPointer *node_p);
+void ll_insert_node_to_sparse_matrix(matrixPointer *node_p, int row, int col, int value);
+void ll_delete_node_from_sparse_matrix(matrixPointer *node_p, int row, int col);
+void ll_insert_node_to_sparse_matrix_test_function();
+void ll_delete_node_from_sparse_matrix_test_function();
 
+//linked_list_sparse_matrix_encapsulated.c functions
+matrixPointer ll_create_sparse_matrix_node_enc();
+sparseMatrixPointerLL ll_read_sparse_matrix_enc(char* filename);
+void ll_print_sparse_matrix_enc(sparseMatrixPointerLL mat);
+void ll_erase_sparse_matrix_enc(sparseMatrixPointerLL *mat_p);
+void ll_insert_node_to_sparse_matrix_enc(sparseMatrixPointerLL *mat_p, int row, int col, int value) ;
+void ll_delete_node_from_sparse_matrix_enc(sparseMatrixPointerLL *mat_p, int row, int col);
+void ll_insert_node_to_sparse_matrix_enc_test_function();
+void ll_delete_node_from_sparse_matrix_enc_test_function();
+
+
+//linked_list_sparse_matrix_advanced.c functions
 
 
 #endif

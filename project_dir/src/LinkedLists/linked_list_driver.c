@@ -17,6 +17,8 @@ void linked_list_driver() {
     //linked_queues_driver();
     //linked_list_polynomial_driver();
     //linked_list_equivalence_class_driver();
-    linked_list_sparse_matrix_driver();
+    //linked_list_sparse_matrix_driver();
+    //linked_list_sparse_matrix_encapsulated_driver();
+    linked_list_sparse_matrix_advanced_driver();
     
 } 

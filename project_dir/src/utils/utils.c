@@ -7,6 +7,10 @@
 #include <time.h>
 #include "utils.h"
 
+
+int mallocCount = 0;
+int freeCount = 0;
+
 /*Print Utilities*/
 
 void print(char* content) {

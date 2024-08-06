@@ -29,6 +29,10 @@
 
 #define COMPARE(x,y) (((x) < (y)) ? -1 : ((x) == (y)) ? 0 : 1)
 
+
+extern int mallocCount;
+extern int freeCount;
+
 void nl();
 void print(char*);
 void printint(int, ...);

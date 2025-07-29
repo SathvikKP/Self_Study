@@ -72,3 +72,41 @@ bool BST::searchRecursive(int val) const {
     return this->searchRecursive(this->root, val);
 }
 
+TreeNode* BST::removeRecursive(TreeNode* node, int val) {
+    if (!node) return nullptr;
+    if (node->val > val) {
+        node->left = this->removeRecursive(node->left, val);
+    } else if (node->val < val) {
+        node->right = this->removeRecursive(node->right, val);
+    } else if (node->val == val) {
+        if (!node->left && !node->right) {
+            TreeNode* delNode = node; delete delNode;
+            return nullptr;
+        } else if (!node->left && node->right) {
+            TreeNode* retNode = node->right;
+            TreeNode* delNode = node; delete delNode;
+            return retNode;
+        } else if (node->left && !node->right) {
+            TreeNode* retNode = node->left;
+            TreeNode* delNode = node; delete delNode;
+            return retNode;
+        } else {
+            int leftHeight = this->heightRecursive(node->left);
+            int rightHeight = this->heightRecursive(node->right);
+            if (leftHeight > rightHeight) {
+                TreeNode* predecessor = this->findSubtreePredecessor(node);
+                node->val = predecessor->val;
+                node->left = removeRecursive(node->left, predecessor->val);
+            } else {
+                TreeNode* successor = this->findSubtreeSuccessor(node);
+                node->val = successor->val;
+                node->right = removeRecursive(node->right, successor->val);
+            }
+        }
+    }
+    return node;
+}
+
+void BST::removeRecursive(int val) {
+    this->root = this->removeRecursive(this->root, val);
+}

@@ -15,7 +15,7 @@ public:
     // Iterative versions (default)
     void insert(int val);
     bool search(int val) const;
-    void remove(int val);
+    //void remove(int val);
 
     // Recursive versions
     void insertRecursive(int val);

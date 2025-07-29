@@ -158,3 +158,155 @@ void Tree::displayRecursive() const {
     this->postorderRecursive();
     std::cout << std::endl;
 }
+
+int Tree::height() const {
+    int h = -1;
+    TreeNode* node = this->root;
+    if (!node) return h;
+    std::stack<std::pair<TreeNode*, int>> S;
+    S.push({node, 0});
+    while (!S.empty()) {
+        std::pair<TreeNode*, int> stackElement = S.top(); S.pop();
+        node = stackElement.first; int curHeight = stackElement.second;
+        if (curHeight > h) h = curHeight;
+        if (node->left) S.push({node->left, curHeight + 1});
+        if (node->right) S.push({node->right, curHeight + 1});
+    }
+    return h;
+}
+
+int Tree::heightRecursive(TreeNode* node) const {
+    if (node == nullptr) return -1;
+    return 1 + std::max(this->heightRecursive(node->left), this->heightRecursive(node->right));
+}
+
+int Tree::heightRecursive() const {
+    return this->heightRecursive(this->root);
+}
+
+
+int Tree::inorderPredecessor(int val) const {
+    int predecessor = INT_MAX;
+    TreeNode* node = this->root;
+    while (node) {
+        if (node->val >= val) {
+            node = node->left;
+        } else {
+            predecessor = node->val;
+            node = node->right;
+        }
+    }
+    if (predecessor == INT_MAX) {
+        std::cout<<"No predecessor node found!"<<std::endl;
+    }
+    return predecessor;
+}
+
+int Tree::inorderSuccessor(int val) const {
+    int successor = INT_MIN;
+    TreeNode* node = this->root;
+    while (node) {
+        if (node->val <= val) {
+            node = node->right;
+        } else {
+            successor = node->val;
+            node = node->left;
+        }
+    }
+    if (successor == INT_MIN) {
+        std::cout<<"No successor node found"<<std::endl;
+    }
+    return successor;
+}
+
+int Tree::inorderPredecessorRecursive(TreeNode* node, int val, int& predecessor) const {
+    if (!node) return predecessor;
+    if (node->val >= val) {
+        return this->inorderPredecessorRecursive(node->left, val, predecessor);
+    } else {
+        predecessor = node->val;
+        return this->inorderPredecessorRecursive(node->right, val, predecessor);
+    }
+}
+
+int Tree::inorderPredecessorRecursive(int val) const {
+    int predecessor = INT_MAX;
+    this->inorderPredecessorRecursive(this->root, val, predecessor);
+    if (predecessor == INT_MAX) {
+        std::cout<<"No predecessor node found!"<<std::endl;
+    }
+    return predecessor;
+}
+
+int Tree::inorderSuccessorRecursive(TreeNode* node, int val, int& successor) const {
+    if (!node) return successor;
+    if (node->val <= val) {
+        return this->inorderSuccessorRecursive(node->right, val, successor);
+    } else {
+        successor = node->val;
+        return this->inorderSuccessorRecursive(node->left, val, successor);
+    }
+}
+
+int Tree::inorderSuccessorRecursive(int val) const {
+    int successor = INT_MIN;
+    this->inorderSuccessorRecursive(this->root, val, successor);
+    if (successor == INT_MIN) {
+        std::cout<<"No successor node found"<<std::endl;
+    }
+    return successor;
+}
+
+TreeNode* Tree::findSubtreePredecessor(TreeNode* node) const {
+    if (!node || !node->left) return nullptr;
+    TreeNode* current = node->left;
+    while (current->right) {
+        current = current->right;
+    }
+    return current;
+}
+
+TreeNode* Tree::findSubtreeSuccessor(TreeNode* node) const {
+    if (!node || !node->right) return nullptr;
+    TreeNode* current = node->right;
+    while (current->left) {
+        current = current->left;
+    }
+    return current;
+}
+
+
+TreeNode* Tree::findGlobalInorderPredecessor(TreeNode* node) const {
+    if (node == nullptr) return nullptr;
+    TreeNode* predecessor = nullptr, *current = this->root;
+    while (current) {
+        if (current->val >= node->val) {
+            current = current->left;
+        } else {
+            predecessor = current;
+            current = current->right;
+        }
+    }
+    if (predecessor == nullptr) {
+        std::cout<<"No predecessor found!"<<std::endl;
+    }
+    return predecessor;
+}
+
+TreeNode* Tree::findGlobalInorderSuccessor(TreeNode* node) const {
+    if (node == nullptr) return nullptr;
+    TreeNode* successor = nullptr, *current = this->root;
+    while (current) {
+        if (current->val <= node->val) {
+            current = current->right;
+        } else {
+            successor = current;
+            current = current->left;
+        }
+    }
+    if (successor == nullptr) {
+        std::cout<<"No successor found!"<<std::endl;
+    }
+    return successor;
+}
+
